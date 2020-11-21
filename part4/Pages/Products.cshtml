@@ -1,0 +1,29 @@
+﻿@page
+@model part4.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<section>
+    <h1> Products</h1>
+
+    <div id="productsWrapper" class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-sm-3">
+                <a asp-page="/order" asp-route-id="@product.Id" title="Order @product.Name">
+                    <div class="productInfo">
+                        <h3>@product.Name</h3>
+                        <img class="product-image img-fluid img-thumbnail" src="~/images/products/@product.ImageName" alt="Image of @product.Name" />
+                        <p class="description">@product.Description</p>
+                    </div>
+                </a>
+                <div class="action">
+                    <p class="price float-left">$@string.Format("{0:f}", product.Price)</p>
+                    <a class="btn btn-sm btn-danger order-button float-right" asp-page="/order" asp-route-id="@product.Id" title="Order @product.Name">Order Now</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</section>

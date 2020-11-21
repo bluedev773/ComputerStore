@@ -20,6 +20,7 @@ namespace part4
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -33,6 +34,7 @@ namespace part4
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+            services.AddDbContext<StoreContext>();
 
             services.Configure<IdentityOptions>(options =>
             {

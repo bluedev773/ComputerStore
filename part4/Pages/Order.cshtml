@@ -1,0 +1,222 @@
+﻿@page "{id:int}"
+@model part4.Pages.OrderModel
+@{
+    ViewData["Title"] = "Place Your Order";
+}
+
+<div class="bg">
+    <h1>@Model.Product.Name</h1>
+    <div class="row mainRow">
+        <div class="col-sm-8" id="productCard">
+            <div class="card card-cascade wider shadow p-3 mb-5 ">
+                <div class="view view-cascade overlay text-center">
+                    <img class="card-img-top" src="~/images/products/@Model.Product.ImageName" alt="Image of @Model.Product.Name"> <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="desc">
+                    <div class="row subRow">
+                        <!--Radio button selections for the mini model-->
+                        @if (Model.Product.Id == 1)
+                        {
+                            <form method="post">
+                                <div class="col">
+                                    <h4>CPU</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="CPU: i3 8145u" name="CPURadio" checked="checked" />i3 8145u<br />
+                                    <input type="radio" onclick="calculate()" value=50 id="CPU: i5 8250u" name="CPURadio" />i5 8250u<br />
+                                    <input type="radio" onclick="calculate()" value=100 id="CPU: i7 8550u" name="CPURadio" />i7 8550u<br />
+                                </div>
+
+                                <div class="col">
+                                    <h4>Memory</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Memory: 8Gb" name="MemoryRadio" checked="checked" />8Gb<br />
+                                    <input type="radio" onclick="calculate()" value=100 id="Memory: 16Gb" name="MemoryRadio" />16Gb<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Storage</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 1TB HDD" name="StorageRadio" />1TB HDD<br />
+                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 128GB SSD" name="StorageRadio" checked="checked" />128GB SSD<br />
+                                    <input type="radio" onclick="calculate()" value=60 id="Storage: 256 Gb SSD" name="StorageRadio" />256 Gb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=120 id="Storage: 512 Gb SSD" name="StorageRadio" />512 Gb SSD<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Video</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Video: Integrated" name="VideoRadio" checked="checked" />Integrated<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Sound</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Sound: Integrated" name="SoundRadio" checked="checked" />Integrated<br />
+                                </div>
+                                <div class="col">
+                                    <h4>OS</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="OS: None" name="OSRadio" checked="checked" />None<br />
+                                    <input type="radio" onclick="calculate()" value=0 id="OS: Ubuntu" name="OSRadio" />Ubuntu<br />
+                                    <input type="radio" onclick="calculate()" value=70 id="OS: Win 10 Home" name="OSRadio"  />Win 10 Home<br />
+                                </div>
+                            </form>
+
+                        }
+                        //Radio button selections for the business model
+                        else if (Model.Product.Id == 2)
+                        {
+                            <form method="post">
+                                <div class="col">
+                                    <h4>CPU</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="CPU: i3 10100" name="CPURadio" checked="checked" />i3 10100<br />
+                                    <input type="radio" onclick="calculate()" value=50 id="CPU: i5 10400" name="CPURadio" />i5 10400<br />
+                                    <input type="radio" onclick="calculate()" value=80 id="CPU: i5 10600" name="CPURadio" />i5 10600<br />
+                                    <input type="radio" onclick="calculate()" value=140 id="CPU: i7 10700" name="CPURadio" />i7 10700<br />
+                                    <input type="radio" onclick="calculate()" value=200 id="CPU: i9 10900" name="CPURadio" />i9 10900<br />
+                                </div>
+
+                                <div class="col">
+                                    <h4>Memory</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Memory: 8Gb" name="MemoryRadio" checked="checked" />8Gb<br />
+                                    <input type="radio" onclick="calculate()" value=100 id="Memory: 16Gb" name="MemoryRadio" />16Gb<br />
+                                    <input type="radio" onclick="calculate()" value=200 id="Memory: 32Gb" name="MemoryRadio" />32Gb<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Storage</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 1TB HDD" name="StorageRadio" checked="checked"  />1TB HDD<br />
+                                    <input type="radio" onclick="calculate()" value=60 id="Storage: 256 Gb SSD" name="StorageRadio" />256 Gb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=120 SSD" id="Storage: 512 Gb SSD" name="StorageRadio" />512 Gb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=240 id="Storage: 1 Tb SSD" name="StorageRadio" />1 Tb SSD<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Video</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Video: Integrated" name="VideoRadio" checked="checked" />Integrated<br />
+                                    <input type="radio" onclick="calculate()" value=300 id="Video: Quadro P620" name="VideoRadio" />Quadro P620<br />
+                                    <input type="radio" onclick="calculate()" value=550 id="Video: Quadro P1000" name="VideoRadio" />Quadro P1000<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Sound</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Sound: Integrated" name="SoundRadio" checked="checked" />Integrated<br />
+                                    <input type="radio" onclick="calculate()" value=40 id="Sound: Sound Blaster 1000" name="SoundRadio" />Sound Blaster 1000<br />
+                                </div>
+                                <div class="col">
+                                    <h4>OS</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="OS: None" name="OSRadio" checked="checked" />None<br />
+                                    <input type="radio" onclick="calculate()" value=0 id="OS: Ubuntu" name="OSRadio" />Ubuntu<br />
+                                    <input type="radio" onclick="calculate()" value=70 id="OS: Win 10 Home" name="OSRadio" />Win 10 Home<br />
+                                    <input type="radio" onclick="calculate()" value=110 id="OS: Win 10 Pro" name="OSRadio" />Win 10 Pro<br />
+                                </div>
+                            </form>
+                        }
+                        //Radio button selections for the gamer model
+                        else
+                        {
+                            <form method="post">
+                                <div class="col">
+                                    <h4>CPU</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="CPU: i5 9400" name="CPURadio" checked="checked" />i5 9400<br />
+                                    <input type="radio" onclick="calculate()" value=75 id="CPU: i5 10400F" name="CPURadio" />i5 10400F<br />
+                                    <input type="radio" onclick="calculate()" value=150 id="CPU: i7 10700k" name="CPURadio" />i7 10700k<br />
+                                </div>
+
+                                <div class="col">
+                                    <h4>Memory</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Memory: 8Gb" name="MemoryRadio" checked="checked" />8Gb<br />
+                                    <input type="radio" onclick="calculate()" value=100 id="Memory: 16Gb" name="MemoryRadio" />16Gb<br />
+                                    <input type="radio" onclick="calculate()" value=200 id="Memory: 32Gb" name="MemoryRadio" />32Gb<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Storage</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 256 Gb SSD" name="StorageRadio" checked="checked" />256 Gb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=120 id="Storage: 512 Gb SSD" name="StorageRadio" />512 Gb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=240 id="Storage: 1 Tb SSD" name="StorageRadio" />1 Tb SSD<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Video</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Video: 1650 Ti" name="VideoRadio" checked="checked" />1650 Ti<br />
+                                    <input type="radio" onclick="calculate()" value=100 id="Video: 1660 Ti" name="VideoRadio" />1660 Ti<br />
+                                    <input type="radio" onclick="calculate()" value=150 id="Video: RTX 2060" name="VideoRadio" />RTX 2060<br />
+                                    <input type="radio" onclick="calculate()" value=300 id="Video: RTX 2070" name="VideoRadio" />RTX 2070<br />
+                                </div>
+                                <div class="col">
+                                    <h4>Sound</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="Sound: Integrated" name="SoundRadio" checked="checked" />Integrated<br />
+                                    <input type="radio" onclick="calculate()" value=40 id="Sound: Sound Blaster 5000" name="SoundRadio" />Sound Blaster 5000<br />
+                                    <input type="radio" onclick="calculate()" value=100 id="Sound: Sound Blaster 10000" name="SoundRadio" />Sound Blaster 10000<br />
+                                </div>
+                                <div class="col">
+                                    <h4>OS</h4>
+                                    <input type="radio" onclick="calculate()" value=0 id="OS: Win 10 Home" name="OSRadio" checked="checked" />Win 10 Home<br />
+                                    <input type="radio" onclick="calculate()" value=40 id="OS: Win 10 Pro" name="OSRadio" />Win 10 Pro<br />
+                                </div>
+                            </form>
+                                }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+        <div class="col-sm-4">
+            <div class="card card-cascade card-ecommerce wider shadow p-3 mb-5 ">
+                <div class="card-body card-body-cascade">
+                    <!--Display Pricing information-->
+                    <div class="card2decs">
+                        <p class="heading1"><strong>@Model.Product.Name</strong></p>
+                        <p class="total" id="subtotal">Base Price<span class="float-right totalText1">$<span class="totalText2" id="subtotal2">@Model.Product.Price</span></span></p>
+                        <p class="total" id="options">Options<span class="float-right totalText1">$<span class="totalText2" id="options2">0</span></span></p>
+                        <p class="total" id="total"><strong>Total</strong><span class="float-right totalText1">$<span class="totalText2" id="total2">@Model.Product.Price</span></span></p>
+
+                    </div>
+                    <!--purchase button-->
+                    <button onclick="summary()" class="purchaseLink">
+                        <div class="card-footer text-center"> PURCHASE &#8594; </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-8" id="productSummary" style="display:none;">
+            <div class="card card-cascade card-ecommerce wider shadow p-3 mb-5 ">
+                <div class="card2decs">
+                    <h3>Order Summary</h3>
+                    <p  id="summary"></p>
+                </div>
+            </div>
+        </div>
+
+            <script>
+            //Script to calculate and print pricing dynamically based off of radio button selections
+                var price = 0;
+
+                function addPrice(element, index, array) {
+                    if (element.checked) price += +element.value;
+                    return price;
+                }
+
+            function calculate() {
+
+                    var rdos = Array.prototype.slice.call(document.getElementsByTagName('input'));
+                rdos.forEach(addPrice);
+                document.getElementById("options2").innerHTML = price;
+                document.getElementById("total2").innerHTML = @Model.Product.Price + price;
+                    price = 0;
+            }
+            //Show order summary
+                var name = "";
+            function summary() {
+                var radios = Array.prototype.slice.call(document.getElementsByTagName('input'));
+                radios.forEach(display);
+                var x = document.getElementById("productCard");
+                var y = document.getElementById("productSummary");
+                x.style.display = "none";
+                y.style.display = "block";
+                
+            }
+            function display(element, index, array) {
+                if (element.checked) {
+                    name = element.id;
+                    console.log(name);
+                    document.getElementById("summary").insertAdjacentHTML('beforeend', name + "<br />");
+                }
+            }
+
+            </script>
+        </div>
+</div>
