@@ -34,7 +34,9 @@ namespace part4
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
-            services.AddDbContext<StoreContext>();
+            services.AddDbContext<OrderContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("OrderContext")));
+        
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -67,6 +69,8 @@ namespace part4
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
