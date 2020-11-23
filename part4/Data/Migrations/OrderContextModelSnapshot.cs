@@ -66,6 +66,32 @@ namespace part4.Data.Migrations
                     b.HasKey("ProductID");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductID = 1,
+                            Description = "A small and lightweight PC for basic computing tasks.",
+                            ImageName = "mini1.jpg",
+                            Name = "The Mini",
+                            Price = 599.99m
+                        },
+                        new
+                        {
+                            ProductID = 2,
+                            Description = "A Business PC for professional applications.",
+                            ImageName = "business1.jpg",
+                            Name = "The Business",
+                            Price = 799.99m
+                        },
+                        new
+                        {
+                            ProductID = 3,
+                            Description = "A PC for playing all of the latest and greatest video games.",
+                            ImageName = "gamer1.jpg",
+                            Name = "The Gamer",
+                            Price = 999.99m
+                        });
                 });
 
             modelBuilder.Entity("part4.Models.Upgrade", b =>
@@ -92,6 +118,29 @@ namespace part4.Data.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("Upgrade");
+
+                    b.HasData(
+                        new
+                        {
+                            UpgradeID = 1,
+                            UpgradeCategory = "Storage",
+                            UpgradeName = "256GB SSD",
+                            UpgradePrice = 50
+                        },
+                        new
+                        {
+                            UpgradeID = 2,
+                            UpgradeCategory = "CPU",
+                            UpgradeName = "i5 9600k",
+                            UpgradePrice = 200
+                        },
+                        new
+                        {
+                            UpgradeID = 3,
+                            UpgradeCategory = "Memory",
+                            UpgradeName = "16GB RAM",
+                            UpgradePrice = 100
+                        });
                 });
 
             modelBuilder.Entity("part4.Models.User", b =>

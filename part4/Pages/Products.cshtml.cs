@@ -12,13 +12,26 @@ namespace part4.Pages
 {
     public class ProductsModel : PageModel
     {
-       // private readonly StoreContext db;
+        // private readonly StoreContext db;
         //public ProductsModel(StoreContext db) => this.db = db;
-      //  public List<Product> Products { get; set; } = new List<Product>();
-       // public Product FeaturedProduct { get; set; }
+        //  public List<Product> Products { get; set; } = new List<Product>();
+        // public Product FeaturedProduct { get; set; }
         //public async Task OnGetAsync()
         //{
-           // Products = await db.Products.ToListAsync();
-       // }
+        // Products = await db.Products.ToListAsync();
+        // }
+        private readonly part4.Data.OrderContext _context;
+
+        public ProductsModel(part4.Data.OrderContext context)
+        {
+            _context = context;
+        }
+
+        public List<Product> Products { get; set; } = new List<Product>();
+
+        public async Task OnGetAsync()
+        {
+            Products = await _context.Products.ToListAsync();
+        }
     }
 }
