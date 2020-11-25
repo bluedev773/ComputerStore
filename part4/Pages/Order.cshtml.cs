@@ -29,10 +29,31 @@ namespace part4.Pages
         [BindProperty(SupportsGet = true)]
         public int id { get; set; }
         public Product Product { get; set; }
+        public Upgrade Upgrade { get; set; }
+        public Order Order { get; set; }
+
+        public List<Upgrade> Upgrades { get; set; } = new List<Upgrade>();
 
 
-        public async Task OnGetAsync() => Product = await _context.Products.FindAsync(id);
 
+        //public async Task OnGetAsync() => Product = await _context.Products.FindAsync(id);
+        public async Task OnGetAsync()
+        {
+            Product = await _context.Products.FindAsync(id);
+            Upgrades = await _context.Upgrades.ToListAsync();
+        }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            //_context.Orders.Add();
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
 
     }
 

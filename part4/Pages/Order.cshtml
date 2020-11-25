@@ -22,36 +22,36 @@
                             <form method="post">
                                 <div class="col">
                                     <h4>CPU</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="CPU: i3 8145u" name="CPURadio" checked="checked" />i3 8145u<br />
-                                    <input type="radio" onclick="calculate()" value=50 id="CPU: i5 8250u" name="CPURadio" />i5 8250u<br />
-                                    <input type="radio" onclick="calculate()" value=100 id="CPU: i7 8550u" name="CPURadio" />i7 8550u<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[0].UpgradePrice id="@Model.Upgrades[0].UpgradeName" name="CPURadio" checked="checked" />@Model.Upgrades[0].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[1].UpgradePrice id=@Model.Upgrades[1].UpgradeName name="CPURadio" />@Model.Upgrades[1].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[2].UpgradePrice id=@Model.Upgrades[2].UpgradeName name="CPURadio" />@Model.Upgrades[2].UpgradeName<br />
                                 </div>
 
                                 <div class="col">
                                     <h4>Memory</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Memory: 8Gb" name="MemoryRadio" checked="checked" />8Gb<br />
-                                    <input type="radio" onclick="calculate()" value=100 id="Memory: 16Gb" name="MemoryRadio" />16Gb<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[3].UpgradePrice id=@Model.Upgrades[3].UpgradeName name="MemoryRadio" checked="checked" />@Model.Upgrades[3].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[4].UpgradePrice id=@Model.Upgrades[4].UpgradeName name="MemoryRadio" />@Model.Upgrades[4].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Storage</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 1TB HDD" name="StorageRadio" />1TB HDD<br />
-                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 128GB SSD" name="StorageRadio" checked="checked" />128GB SSD<br />
-                                    <input type="radio" onclick="calculate()" value=60 id="Storage: 256 Gb SSD" name="StorageRadio" />256 Gb SSD<br />
-                                    <input type="radio" onclick="calculate()" value=120 id="Storage: 512 Gb SSD" name="StorageRadio" />512 Gb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[5].UpgradePrice id=@Model.Upgrades[5].UpgradeName name="StorageRadio" />@Model.Upgrades[5].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[6].UpgradePrice id=@Model.Upgrades[6].UpgradeName name="StorageRadio" checked="checked" />@Model.Upgrades[6].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[7].UpgradePrice id=@Model.Upgrades[7].UpgradeName name="StorageRadio" />@Model.Upgrades[7].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[8].UpgradePrice id=@Model.Upgrades[8].UpgradeName name="StorageRadio" />@Model.Upgrades[8].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Video</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Video: Integrated" name="VideoRadio" checked="checked" />Integrated<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[9].UpgradePrice id=@Model.Upgrades[9].UpgradeName name="VideoRadio" checked="checked" />@Model.Upgrades[9].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Sound</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Sound: Integrated" name="SoundRadio" checked="checked" />Integrated<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[10].UpgradePrice id=@Model.Upgrades[10].UpgradeName name="SoundRadio" checked="checked" />@Model.Upgrades[10].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>OS</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="OS: None" name="OSRadio" checked="checked" />None<br />
-                                    <input type="radio" onclick="calculate()" value=0 id="OS: Ubuntu" name="OSRadio" />Ubuntu<br />
-                                    <input type="radio" onclick="calculate()" value=70 id="OS: Win 10 Home" name="OSRadio"  />Win 10 Home<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[11].UpgradePrice id=@Model.Upgrades[11].UpgradeName name="OSRadio" checked="checked" />@Model.Upgrades[11].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[12].UpgradePrice id=@Model.Upgrades[12].UpgradeName name="OSRadio" />@Model.Upgrades[12].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[13].UpgradePrice id=@Model.Upgrades[13].UpgradeName name="OSRadio" />@Model.Upgrades[13].UpgradeName<br />
                                 </div>
                             </form>
 
@@ -62,43 +62,43 @@
                             <form method="post">
                                 <div class="col">
                                     <h4>CPU</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="CPU: i3 10100" name="CPURadio" checked="checked" />i3 10100<br />
-                                    <input type="radio" onclick="calculate()" value=50 id="CPU: i5 10400" name="CPURadio" />i5 10400<br />
-                                    <input type="radio" onclick="calculate()" value=80 id="CPU: i5 10600" name="CPURadio" />i5 10600<br />
-                                    <input type="radio" onclick="calculate()" value=140 id="CPU: i7 10700" name="CPURadio" />i7 10700<br />
-                                    <input type="radio" onclick="calculate()" value=200 id="CPU: i9 10900" name="CPURadio" />i9 10900<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[14].UpgradePrice id=@Model.Upgrades[14].UpgradeName name="CPURadio" checked="checked" />@Model.Upgrades[14].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[15].UpgradePrice id=@Model.Upgrades[15].UpgradeName name="CPURadio" />@Model.Upgrades[15].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[16].UpgradePrice id=@Model.Upgrades[16].UpgradeName name="CPURadio" />@Model.Upgrades[16].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[17].UpgradePrice id=@Model.Upgrades[17].UpgradeName name="CPURadio" />@Model.Upgrades[17].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[18].UpgradePrice id=@Model.Upgrades[18].UpgradeName name="CPURadio" />@Model.Upgrades[18].UpgradeName<br />
                                 </div>
 
                                 <div class="col">
                                     <h4>Memory</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Memory: 8Gb" name="MemoryRadio" checked="checked" />8Gb<br />
-                                    <input type="radio" onclick="calculate()" value=100 id="Memory: 16Gb" name="MemoryRadio" />16Gb<br />
-                                    <input type="radio" onclick="calculate()" value=200 id="Memory: 32Gb" name="MemoryRadio" />32Gb<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[19].UpgradePrice id=@Model.Upgrades[19].UpgradeName name="MemoryRadio" checked="checked" />@Model.Upgrades[19].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[20].UpgradePrice id=@Model.Upgrades[20].UpgradeName name="MemoryRadio" />@Model.Upgrades[20].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[21].UpgradePrice id=@Model.Upgrades[21].UpgradeName name="MemoryRadio" />@Model.Upgrades[21].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Storage</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 1TB HDD" name="StorageRadio" checked="checked"  />1TB HDD<br />
-                                    <input type="radio" onclick="calculate()" value=60 id="Storage: 256 Gb SSD" name="StorageRadio" />256 Gb SSD<br />
-                                    <input type="radio" onclick="calculate()" value=120 SSD" id="Storage: 512 Gb SSD" name="StorageRadio" />512 Gb SSD<br />
-                                    <input type="radio" onclick="calculate()" value=240 id="Storage: 1 Tb SSD" name="StorageRadio" />1 Tb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[22].UpgradePrice id=@Model.Upgrades[22].UpgradeName name="StorageRadio" checked="checked" />@Model.Upgrades[22].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[23].UpgradePrice id=@Model.Upgrades[23].UpgradeName name="StorageRadio" />@Model.Upgrades[23].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[24].UpgradePrice id=@Model.Upgrades[24].UpgradeName name="StorageRadio" />@Model.Upgrades[24].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[25].UpgradePrice id=@Model.Upgrades[25].UpgradeName name="StorageRadio" />@Model.Upgrades[25].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Video</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Video: Integrated" name="VideoRadio" checked="checked" />Integrated<br />
-                                    <input type="radio" onclick="calculate()" value=300 id="Video: Quadro P620" name="VideoRadio" />Quadro P620<br />
-                                    <input type="radio" onclick="calculate()" value=550 id="Video: Quadro P1000" name="VideoRadio" />Quadro P1000<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[26].UpgradePrice id=@Model.Upgrades[26].UpgradeName name="VideoRadio" checked="checked" />@Model.Upgrades[26].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[27].UpgradePrice id=@Model.Upgrades[27].UpgradeName name="VideoRadio" />@Model.Upgrades[27].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[28].UpgradePrice id=@Model.Upgrades[28].UpgradeName name="VideoRadio" />@Model.Upgrades[28].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Sound</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Sound: Integrated" name="SoundRadio" checked="checked" />Integrated<br />
-                                    <input type="radio" onclick="calculate()" value=40 id="Sound: Sound Blaster 1000" name="SoundRadio" />Sound Blaster 1000<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[29].UpgradePrice id=@Model.Upgrades[29].UpgradeName name="SoundRadio" checked="checked" />@Model.Upgrades[29].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[30].UpgradePrice id=@Model.Upgrades[30].UpgradeName name="SoundRadio" />@Model.Upgrades[30].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>OS</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="OS: None" name="OSRadio" checked="checked" />None<br />
-                                    <input type="radio" onclick="calculate()" value=0 id="OS: Ubuntu" name="OSRadio" />Ubuntu<br />
-                                    <input type="radio" onclick="calculate()" value=70 id="OS: Win 10 Home" name="OSRadio" />Win 10 Home<br />
-                                    <input type="radio" onclick="calculate()" value=110 id="OS: Win 10 Pro" name="OSRadio" />Win 10 Pro<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[31].UpgradePrice id=@Model.Upgrades[31].UpgradeName name="OSRadio" checked="checked" />@Model.Upgrades[31].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[32].UpgradePrice id=@Model.Upgrades[32].UpgradeName name="OSRadio" />@Model.Upgrades[32].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[33].UpgradePrice id=@Model.Upgrades[33].UpgradeName name="OSRadio" />@Model.Upgrades[33].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[34].UpgradePrice id=@Model.Upgrades[34].UpgradeName name="OSRadio" />@Model.Upgrades[34].UpgradeName<br />
                                 </div>
                             </form>
                         }
@@ -108,43 +108,43 @@
                             <form method="post">
                                 <div class="col">
                                     <h4>CPU</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="CPU: i5 9400" name="CPURadio" checked="checked" />i5 9400<br />
-                                    <input type="radio" onclick="calculate()" value=75 id="CPU: i5 10400F" name="CPURadio" />i5 10400F<br />
-                                    <input type="radio" onclick="calculate()" value=150 id="CPU: i7 10700k" name="CPURadio" />i7 10700k<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[35].UpgradePrice id=@Model.Upgrades[35].UpgradeName name="CPURadio" checked="checked" />@Model.Upgrades[35].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[36].UpgradePrice id=@Model.Upgrades[36].UpgradeName name="CPURadio" />@Model.Upgrades[36].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[37].UpgradePrice id=@Model.Upgrades[37].UpgradeName name="CPURadio" />@Model.Upgrades[37].UpgradeName<br />
                                 </div>
 
                                 <div class="col">
                                     <h4>Memory</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Memory: 8Gb" name="MemoryRadio" checked="checked" />8Gb<br />
-                                    <input type="radio" onclick="calculate()" value=100 id="Memory: 16Gb" name="MemoryRadio" />16Gb<br />
-                                    <input type="radio" onclick="calculate()" value=200 id="Memory: 32Gb" name="MemoryRadio" />32Gb<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[38].UpgradePrice id=@Model.Upgrades[38].UpgradeName name="MemoryRadio" checked="checked" />@Model.Upgrades[38].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[39].UpgradePrice id=@Model.Upgrades[39].UpgradeName name="MemoryRadio" />@Model.Upgrades[39].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[40].UpgradePrice id=@Model.Upgrades[40].UpgradeName name="MemoryRadio" />@Model.Upgrades[40].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Storage</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Storage: 256 Gb SSD" name="StorageRadio" checked="checked" />256 Gb SSD<br />
-                                    <input type="radio" onclick="calculate()" value=120 id="Storage: 512 Gb SSD" name="StorageRadio" />512 Gb SSD<br />
-                                    <input type="radio" onclick="calculate()" value=240 id="Storage: 1 Tb SSD" name="StorageRadio" />1 Tb SSD<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[41].UpgradePrice id=@Model.Upgrades[41].UpgradeName name="StorageRadio" checked="checked" />@Model.Upgrades[41].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[42].UpgradePrice id=@Model.Upgrades[42].UpgradeName name="StorageRadio" />@Model.Upgrades[42].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[43].UpgradePrice id=@Model.Upgrades[43].UpgradeName name="StorageRadio" />@Model.Upgrades[43].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Video</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Video: 1650 Ti" name="VideoRadio" checked="checked" />1650 Ti<br />
-                                    <input type="radio" onclick="calculate()" value=100 id="Video: 1660 Ti" name="VideoRadio" />1660 Ti<br />
-                                    <input type="radio" onclick="calculate()" value=150 id="Video: RTX 2060" name="VideoRadio" />RTX 2060<br />
-                                    <input type="radio" onclick="calculate()" value=300 id="Video: RTX 2070" name="VideoRadio" />RTX 2070<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[44].UpgradePrice id=@Model.Upgrades[44].UpgradeName name="VideoRadio" checked="checked" />@Model.Upgrades[44].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[45].UpgradePrice id=@Model.Upgrades[45].UpgradeName name="VideoRadio" />@Model.Upgrades[45].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[46].UpgradePrice id=@Model.Upgrades[46].UpgradeName name="VideoRadio" />@Model.Upgrades[46].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[47].UpgradePrice id=@Model.Upgrades[47].UpgradeName name="VideoRadio" />@Model.Upgrades[47].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>Sound</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="Sound: Integrated" name="SoundRadio" checked="checked" />Integrated<br />
-                                    <input type="radio" onclick="calculate()" value=40 id="Sound: Sound Blaster 5000" name="SoundRadio" />Sound Blaster 5000<br />
-                                    <input type="radio" onclick="calculate()" value=100 id="Sound: Sound Blaster 10000" name="SoundRadio" />Sound Blaster 10000<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[48].UpgradePrice id=@Model.Upgrades[48].UpgradeName name="SoundRadio" checked="checked" />@Model.Upgrades[48].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[49].UpgradePrice id=@Model.Upgrades[49].UpgradeName name="SoundRadio" />@Model.Upgrades[49].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[50].UpgradePrice id=@Model.Upgrades[50].UpgradeName name="SoundRadio" />@Model.Upgrades[50].UpgradeName<br />
                                 </div>
                                 <div class="col">
                                     <h4>OS</h4>
-                                    <input type="radio" onclick="calculate()" value=0 id="OS: Win 10 Home" name="OSRadio" checked="checked" />Win 10 Home<br />
-                                    <input type="radio" onclick="calculate()" value=40 id="OS: Win 10 Pro" name="OSRadio" />Win 10 Pro<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[51].UpgradePrice id=@Model.Upgrades[51].UpgradeName checked="checked" />@Model.Upgrades[51].UpgradeName<br />
+                                    <input type="radio" onclick="calculate()" value=@Model.Upgrades[52].UpgradePrice id=@Model.Upgrades[52].UpgradeName />@Model.Upgrades[52].UpgradeName<br />
                                 </div>
                             </form>
-                                }
+                        }
 
                     </div>
                 </div>
@@ -172,16 +172,24 @@
             </div>
         </div>
 
+        <!--Order SUmmary-->
         <div class="col-sm-8" id="productSummary" style="display:none;">
             <div class="card card-cascade card-ecommerce wider shadow p-3 mb-5 ">
                 <div class="card2decs">
                     <h3>Order Summary</h3>
-                    <p  id="summary"></p>
+
+                    <form method="post">
+                        <div id="summary">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Order" class="btn btn-primary" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
 
-            <script>
+        <script>
             //Script to calculate and print pricing dynamically based off of radio button selections
                 var price = 0;
 
@@ -207,16 +215,27 @@
                 var y = document.getElementById("productSummary");
                 x.style.display = "none";
                 y.style.display = "block";
-                
+
             }
             function display(element, index, array) {
                 if (element.checked) {
                     name = element.id;
                     console.log(name);
-                    document.getElementById("summary").insertAdjacentHTML('beforeend', name + "<br />");
+                    //document.getElementById("summary").insertAdjacentHTML('beforeend', name + "<br />");
+                    var x = document.createElement("INPUT");
+                    x.setAttribute("type", "text");
+                    x.setAttribute("value", name);
+                    x.setAttribute("class", "form-control");
+                    x.setAttribute("readonly", "readonly");
+                    document.getElementById("summary").appendChild(x);
+                    //TODO: Make form with selected options and write to database on post
                 }
             }
 
-            </script>
-        </div>
+        </script>
+    </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

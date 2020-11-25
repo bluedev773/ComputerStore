@@ -16,7 +16,7 @@ namespace part4.Models
         [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
         public string ImageName { get; set; }
-        public ICollection<Upgrade> Upgrades { get; set; }
+        
 
     }
 }
