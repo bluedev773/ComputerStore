@@ -9,9 +9,8 @@ namespace part4.Models
     {
         public int UpgradeID { get; set; }
         public string UpgradeName { get; set; }
-
         public string UpgradeCategory { get; set; }
-
         public int UpgradePrice { get; set; }
+        public ICollection<UpgradePJT> UpgradePJT { get; set; }
     }
 }

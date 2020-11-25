@@ -34,7 +34,8 @@ namespace part4.Pages
 
         public List<Upgrade> Upgrades { get; set; } = new List<Upgrade>();
 
-
+        [BindProperty]
+        public int[] UpgradeIDS { get; set; }
 
         //public async Task OnGetAsync() => Product = await _context.Products.FindAsync(id);
         public async Task OnGetAsync()
@@ -49,7 +50,7 @@ namespace part4.Pages
                 return Page();
             }
 
-            //_context.Orders.Add();
+            _context.Orders.Add(Order);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

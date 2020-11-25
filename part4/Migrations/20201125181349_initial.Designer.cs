@@ -10,8 +10,8 @@ using part4.Data;
 namespace part4.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20201125014530_initialcreate")]
-    partial class initialcreate
+    [Migration("20201125181349_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -228,25 +228,31 @@ namespace part4.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
-
-                    b.Property<int?>("UpgradeID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderID");
 
                     b.HasIndex("ProductID");
 
-                    b.HasIndex("UpgradeID");
-
                     b.ToTable("Order");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderID = 1,
+                            OrderDate = new DateTime(2019, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductID = 1
+                        },
+                        new
+                        {
+                            OrderID = 2,
+                            OrderDate = new DateTime(2019, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductID = 2
+                        });
                 });
 
             modelBuilder.Entity("part4.Models.Product", b =>
@@ -306,9 +312,6 @@ namespace part4.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("OrderID")
-                        .HasColumnType("int");
-
                     b.Property<string>("UpgradeCategory")
                         .HasColumnType("nvarchar(max)");
 
@@ -319,8 +322,6 @@ namespace part4.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UpgradeID");
-
-                    b.HasIndex("OrderID");
 
                     b.ToTable("Upgrade");
 
@@ -698,6 +699,102 @@ namespace part4.Migrations
                         });
                 });
 
+            modelBuilder.Entity("part4.Models.UpgradePJT", b =>
+                {
+                    b.Property<int>("UpgradePJTID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UpgradeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("UpgradePJTID");
+
+                    b.HasIndex("OrderID");
+
+                    b.HasIndex("UpgradeID");
+
+                    b.ToTable("UpgradePJT");
+
+                    b.HasData(
+                        new
+                        {
+                            UpgradePJTID = 1,
+                            OrderID = 1,
+                            UpgradeID = 1
+                        },
+                        new
+                        {
+                            UpgradePJTID = 2,
+                            OrderID = 1,
+                            UpgradeID = 4
+                        },
+                        new
+                        {
+                            UpgradePJTID = 3,
+                            OrderID = 1,
+                            UpgradeID = 6
+                        },
+                        new
+                        {
+                            UpgradePJTID = 4,
+                            OrderID = 1,
+                            UpgradeID = 10
+                        },
+                        new
+                        {
+                            UpgradePJTID = 5,
+                            OrderID = 1,
+                            UpgradeID = 11
+                        },
+                        new
+                        {
+                            UpgradePJTID = 6,
+                            OrderID = 1,
+                            UpgradeID = 12
+                        },
+                        new
+                        {
+                            UpgradePJTID = 7,
+                            OrderID = 2,
+                            UpgradeID = 15
+                        },
+                        new
+                        {
+                            UpgradePJTID = 8,
+                            OrderID = 2,
+                            UpgradeID = 20
+                        },
+                        new
+                        {
+                            UpgradePJTID = 9,
+                            OrderID = 2,
+                            UpgradeID = 23
+                        },
+                        new
+                        {
+                            UpgradePJTID = 10,
+                            OrderID = 2,
+                            UpgradeID = 27
+                        },
+                        new
+                        {
+                            UpgradePJTID = 11,
+                            OrderID = 2,
+                            UpgradeID = 30
+                        },
+                        new
+                        {
+                            UpgradePJTID = 12,
+                            OrderID = 2,
+                            UpgradeID = 32
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -756,17 +853,21 @@ namespace part4.Migrations
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("part4.Models.Upgrade", "Upgrade")
-                        .WithMany()
-                        .HasForeignKey("UpgradeID");
                 });
 
-            modelBuilder.Entity("part4.Models.Upgrade", b =>
+            modelBuilder.Entity("part4.Models.UpgradePJT", b =>
                 {
-                    b.HasOne("part4.Models.Order", null)
-                        .WithMany("Upgrades")
-                        .HasForeignKey("OrderID");
+                    b.HasOne("part4.Models.Order", "Order")
+                        .WithMany("UpgradePJT")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("part4.Models.Upgrade", "Upgrade")
+                        .WithMany("UpgradePJT")
+                        .HasForeignKey("UpgradeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

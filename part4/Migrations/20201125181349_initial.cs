@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace part4.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,21 @@ namespace part4.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Product", x => x.ProductID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Upgrade",
+                columns: table => new
+                {
+                    UpgradeID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UpgradeName = table.Column<string>(nullable: true),
+                    UpgradeCategory = table.Column<string>(nullable: true),
+                    UpgradePrice = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Upgrade", x => x.UpgradeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -169,31 +184,13 @@ namespace part4.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Upgrade",
-                columns: table => new
-                {
-                    UpgradeID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UpgradeName = table.Column<string>(nullable: true),
-                    UpgradeCategory = table.Column<string>(nullable: true),
-                    UpgradePrice = table.Column<int>(nullable: false),
-                    OrderID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Upgrade", x => x.UpgradeID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Order",
                 columns: table => new
                 {
                     OrderID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<string>(nullable: true),
                     ProductID = table.Column<int>(nullable: false),
-                    Date = table.Column<string>(nullable: true),
-                    UpgradeID = table.Column<int>(nullable: true)
+                    OrderDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -204,12 +201,32 @@ namespace part4.Migrations
                         principalTable: "Product",
                         principalColumn: "ProductID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UpgradePJT",
+                columns: table => new
+                {
+                    UpgradePJTID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderID = table.Column<int>(nullable: false),
+                    UpgradeID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UpgradePJT", x => x.UpgradePJTID);
                     table.ForeignKey(
-                        name: "FK_Order_Upgrade_UpgradeID",
+                        name: "FK_UpgradePJT_Order_OrderID",
+                        column: x => x.OrderID,
+                        principalTable: "Order",
+                        principalColumn: "OrderID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UpgradePJT_Upgrade_UpgradeID",
                         column: x => x.UpgradeID,
                         principalTable: "Upgrade",
                         principalColumn: "UpgradeID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -224,62 +241,91 @@ namespace part4.Migrations
 
             migrationBuilder.InsertData(
                 table: "Upgrade",
-                columns: new[] { "UpgradeID", "OrderID", "UpgradeCategory", "UpgradeName", "UpgradePrice" },
+                columns: new[] { "UpgradeID", "UpgradeCategory", "UpgradeName", "UpgradePrice" },
                 values: new object[,]
                 {
-                    { 29, null, "Video", "Quadro P1000", 550 },
-                    { 30, null, "Sound", "Integrated", 0 },
-                    { 31, null, "Sound", "Sound Blaster 1000", 40 },
-                    { 32, null, "OS", "None", 0 },
-                    { 33, null, "OS", "Ubuntu", 0 },
-                    { 34, null, "OS", "Win 10 Home", 70 },
-                    { 35, null, "OS", "Win 10 Pro", 110 },
-                    { 36, null, "CPU", "i5 9400", 0 },
-                    { 37, null, "CPU", "i5 10400F", 75 },
-                    { 38, null, "CPU", "i7 10700k", 150 },
-                    { 39, null, "Memory", "8 Gb", 0 },
-                    { 41, null, "Memory", "32 Gb", 200 },
-                    { 28, null, "Video", "Quadro P620", 300 },
-                    { 42, null, "Storage", "256 Gb SSD", 60 },
-                    { 43, null, "Storage", "512 Gb SSD", 120 },
-                    { 44, null, "Storage", "1 Tb SSD", 240 },
-                    { 45, null, "Video", "1650 Ti", 0 },
-                    { 46, null, "Video", "1660 Ti", 100 },
-                    { 47, null, "Video", "RTX 2060", 150 },
-                    { 48, null, "Video", "RTX 2070", 300 },
-                    { 49, null, "Sound", "Integrated", 0 },
-                    { 50, null, "Sound", "Sound Blaster 5000", 40 },
-                    { 51, null, "Sound", "Sound Blaster 10000", 100 },
-                    { 40, null, "Memory", "16 Gb", 100 },
-                    { 27, null, "Video", "Integrated", 0 },
-                    { 25, null, "Storage", "512 Gb SSD", 120 },
-                    { 52, null, "OS", "Win 10 Home", 0 },
-                    { 1, null, "CPU", "i3 8130u", 0 },
-                    { 2, null, "CPU", "i5 8250u", 50 },
-                    { 3, null, "CPU", "i7 8550u", 100 },
-                    { 4, null, "Memory", "8 Gb", 0 },
-                    { 5, null, "Memory", "16 Gb", 100 },
-                    { 6, null, "Storage", "1 Tb HDD", 0 },
-                    { 7, null, "Storage", "128 Gb SSD", 0 },
-                    { 8, null, "Storage", "256 Gb SSD", 60 },
-                    { 9, null, "Storage", "512 Gb SSD", 120 },
-                    { 10, null, "Video", "Integrated", 0 },
-                    { 11, null, "Sound", "Integrated", 0 },
-                    { 26, null, "Storage", "1 Tb SSD", 240 },
-                    { 12, null, "OS", "None", 0 },
-                    { 14, null, "OS", "Win 10 Home", 70 },
-                    { 15, null, "CPU", "i3 10100", 0 },
-                    { 16, null, "CPU", "i5 10400", 50 },
-                    { 17, null, "CPU", "i5 10600", 80 },
-                    { 18, null, "CPU", "i7 10700", 140 },
-                    { 19, null, "CPU", "i9 10900", 200 },
-                    { 20, null, "Memory", "8 Gb", 0 },
-                    { 21, null, "Memory", "16 Gb", 100 },
-                    { 22, null, "Memory", "32 Gb", 200 },
-                    { 23, null, "Storage", "1 Tb HDD", 0 },
-                    { 24, null, "Storage", "256 Gb SSD", 60 },
-                    { 13, null, "OS", "Ubuntu", 0 },
-                    { 53, null, "OS", "Win 10 Pro", 40 }
+                    { 29, "Video", "Quadro P1000", 550 },
+                    { 30, "Sound", "Integrated", 0 },
+                    { 31, "Sound", "Sound Blaster 1000", 40 },
+                    { 32, "OS", "None", 0 },
+                    { 33, "OS", "Ubuntu", 0 },
+                    { 34, "OS", "Win 10 Home", 70 },
+                    { 35, "OS", "Win 10 Pro", 110 },
+                    { 36, "CPU", "i5 9400", 0 },
+                    { 37, "CPU", "i5 10400F", 75 },
+                    { 38, "CPU", "i7 10700k", 150 },
+                    { 39, "Memory", "8 Gb", 0 },
+                    { 41, "Memory", "32 Gb", 200 },
+                    { 28, "Video", "Quadro P620", 300 },
+                    { 42, "Storage", "256 Gb SSD", 60 },
+                    { 43, "Storage", "512 Gb SSD", 120 },
+                    { 44, "Storage", "1 Tb SSD", 240 },
+                    { 45, "Video", "1650 Ti", 0 },
+                    { 46, "Video", "1660 Ti", 100 },
+                    { 47, "Video", "RTX 2060", 150 },
+                    { 48, "Video", "RTX 2070", 300 },
+                    { 49, "Sound", "Integrated", 0 },
+                    { 50, "Sound", "Sound Blaster 5000", 40 },
+                    { 51, "Sound", "Sound Blaster 10000", 100 },
+                    { 40, "Memory", "16 Gb", 100 },
+                    { 27, "Video", "Integrated", 0 },
+                    { 25, "Storage", "512 Gb SSD", 120 },
+                    { 52, "OS", "Win 10 Home", 0 },
+                    { 1, "CPU", "i3 8130u", 0 },
+                    { 2, "CPU", "i5 8250u", 50 },
+                    { 3, "CPU", "i7 8550u", 100 },
+                    { 4, "Memory", "8 Gb", 0 },
+                    { 5, "Memory", "16 Gb", 100 },
+                    { 6, "Storage", "1 Tb HDD", 0 },
+                    { 7, "Storage", "128 Gb SSD", 0 },
+                    { 8, "Storage", "256 Gb SSD", 60 },
+                    { 9, "Storage", "512 Gb SSD", 120 },
+                    { 10, "Video", "Integrated", 0 },
+                    { 11, "Sound", "Integrated", 0 },
+                    { 26, "Storage", "1 Tb SSD", 240 },
+                    { 12, "OS", "None", 0 },
+                    { 14, "OS", "Win 10 Home", 70 },
+                    { 15, "CPU", "i3 10100", 0 },
+                    { 16, "CPU", "i5 10400", 50 },
+                    { 17, "CPU", "i5 10600", 80 },
+                    { 18, "CPU", "i7 10700", 140 },
+                    { 19, "CPU", "i9 10900", 200 },
+                    { 20, "Memory", "8 Gb", 0 },
+                    { 21, "Memory", "16 Gb", 100 },
+                    { 22, "Memory", "32 Gb", 200 },
+                    { 23, "Storage", "1 Tb HDD", 0 },
+                    { 24, "Storage", "256 Gb SSD", 60 },
+                    { 13, "OS", "Ubuntu", 0 },
+                    { 53, "OS", "Win 10 Pro", 40 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Order",
+                columns: new[] { "OrderID", "OrderDate", "ProductID" },
+                values: new object[] { 1, new DateTime(2019, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 });
+
+            migrationBuilder.InsertData(
+                table: "Order",
+                columns: new[] { "OrderID", "OrderDate", "ProductID" },
+                values: new object[] { 2, new DateTime(2019, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 });
+
+            migrationBuilder.InsertData(
+                table: "UpgradePJT",
+                columns: new[] { "UpgradePJTID", "OrderID", "UpgradeID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 1, 4 },
+                    { 3, 1, 6 },
+                    { 4, 1, 10 },
+                    { 5, 1, 11 },
+                    { 6, 1, 12 },
+                    { 7, 2, 15 },
+                    { 8, 2, 20 },
+                    { 9, 2, 23 },
+                    { 10, 2, 27 },
+                    { 11, 2, 30 },
+                    { 12, 2, 32 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -327,34 +373,18 @@ namespace part4.Migrations
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_UpgradeID",
-                table: "Order",
-                column: "UpgradeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Upgrade_OrderID",
-                table: "Upgrade",
+                name: "IX_UpgradePJT_OrderID",
+                table: "UpgradePJT",
                 column: "OrderID");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Upgrade_Order_OrderID",
-                table: "Upgrade",
-                column: "OrderID",
-                principalTable: "Order",
-                principalColumn: "OrderID",
-                onDelete: ReferentialAction.Restrict);
+            migrationBuilder.CreateIndex(
+                name: "IX_UpgradePJT_UpgradeID",
+                table: "UpgradePJT",
+                column: "UpgradeID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Order_Product_ProductID",
-                table: "Order");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Order_Upgrade_UpgradeID",
-                table: "Order");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -371,19 +401,22 @@ namespace part4.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "UpgradePJT");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Upgrade");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Product");
         }
     }
 }
