@@ -2,6 +2,7 @@
 @model part4.Pages.OrderModel
 @{
     ViewData["Title"] = "Place Your Order";
+    
 }
 
 <div class="bg">
@@ -164,9 +165,9 @@
                         <p class="total" id="total"><strong>Total</strong><span class="float-right totalText1">$<span class="totalText2" id="total2">@Model.Product.Price</span></span></p>
 
                     </div>
-                    <!--purchase button-->
+                    <!--purchase button TODO: add summary() back to onlick-->
                     <button onclick="summary()" class="purchaseLink">
-                        <div class="card-footer text-center"> PURCHASE &#8594; </div>
+                        <div id ="purchaseBtn"class="card-footer text-center"> PURCHASE &#8594; </div>
                     </button>
                 </div>
             </div>
@@ -178,16 +179,44 @@
                 <div class="card2decs">
                     <h3>Order Summary</h3>
 
-                    <form method="post">
-                        <div id="summary">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-group">
+                                    <label asp-for="Order.UserID" class="control-label"></label>
+                                    <input asp-for="Order.UserID" class="form-control" value="@Model.UserID" id="userid" readonly="readonly" />
+                                    <span asp-validation-for="Order.UserID" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Order.ProductID" class="control-label"></label>
+                                    <input asp-for="Order.ProductID" class="form-control" id="productid" readonly="readonly" />
+                                    <span asp-validation-for="Order.ProductID" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Order.OrderDate" class="control-label"></label>
+                                    <input asp-for="Order.OrderDate" class="form-control" id="orderdate" />
+                                    <span asp-validation-for="Order.OrderDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Order.OrderPrice" class="control-label"></label>
+                                    <input asp-for="Order.OrderPrice" class="form-control" readonly="readonly" id="orderprice" />
+                                    <span asp-validation-for="Order.OrderPrice" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Order" class="btn btn-primary" />
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Order" class="btn btn-primary" />
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+ 
+
+
 
         <script>
             //Script to calculate and print pricing dynamically based off of radio button selections
@@ -204,16 +233,42 @@
                 rdos.forEach(addPrice);
                 document.getElementById("options2").innerHTML = price;
                 document.getElementById("total2").innerHTML = @Model.Product.Price + price;
+                document.getElementById("total2").value = @Model.Product.Price + price;
                     price = 0;
             }
             //Show order summary
-                var name = "";
+               // var name = "";
             function summary() {
-                var radios = Array.prototype.slice.call(document.getElementsByTagName('input'));
-                radios.forEach(display);
+              //  var radios = Array.prototype.slice.call(document.getElementsByTagName('input'));
+               // radios.forEach(display);
+                var id = @Model.Product.ProductID;
+                var z = document.getElementById("productid");
+                var price = document.getElementById("total2").innerHTML;
+                document.getElementById("orderprice").value = price;
+
+
+               // var b = document.getElementById("userid");
+              //  z.setAttribute("type", "text");
+                z.value = id;
+               // b.value = userid;
+              //  z.setAttribute("asp-for", "Model.Order.ProductID");
+              //  z.setAttribute("class", "form-control");
+              //  z.setAttribute("readonly", "readonly");
+             //   document.getElementById("summary").appendChild(z);
+
+
+
+               // var a = document.createElement("INPUT");
+              //  a.setAttribute("type", "text");
+               // a.value = localDateTime;
+              //  a.setAttribute("asp-for", "Model.Order.OrderDate");
+               // document.getElementById("summary").appendChild(a);*
                 var x = document.getElementById("productCard");
                 var y = document.getElementById("productSummary");
+                var z = document.getElementById("purchaseBtn");
+
                 x.style.display = "none";
+                z.style.display = "none";
                 y.style.display = "block";
 
             }

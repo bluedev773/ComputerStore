@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace part4.Pages
 {
+    [Authorize]
     public class OrderModel : PageModel
     {
+        public string UserID { get; set; }
         // private StoreContext db;
         // public OrderModel(StoreContext db) => this.db = db;
 
@@ -38,22 +42,42 @@ namespace part4.Pages
         public int[] UpgradeIDS { get; set; }
 
         //public async Task OnGetAsync() => Product = await _context.Products.FindAsync(id);
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
+            UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (id == null)
+            {
+                return NotFound();
+            }
             Product = await _context.Products.FindAsync(id);
             Upgrades = await _context.Upgrades.ToListAsync();
+            Order = await _context.Orders
+                .Include(s => s.UpgradePJT)
+                .ThenInclude(e => e.Upgrade)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.OrderID == id);
+            if (Order == null)
+            {
+                return NotFound();
+            }
+            return Page();
         }
+        
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptyOrder = new Order();
+
+            if (await TryUpdateModelAsync<Order>(
+                    emptyOrder,
+                    "order",
+                    s => s.ProductID, s => s.UserID, s => s.OrderDate, s => s.OrderPrice
+                    ))
             {
-                return Page();
+                _context.Orders.Add(emptyOrder);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            _context.Orders.Add(Order);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
 
     }

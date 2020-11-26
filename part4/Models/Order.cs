@@ -10,7 +10,8 @@ namespace part4.Models
     public class Order
     {
         public int OrderID { get; set; }
-       // public string UserID { get; set; }
+        public string OrderPrice { get; set; }
+        public string UserID { get; set; }
         public int ProductID { get; set; }
         public DateTime OrderDate { get; set; }
         public ICollection<UpgradePJT> UpgradePJT { get; set; }

@@ -227,3 +227,4 @@ C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Areas\Iden
 C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_StatusMessage.cshtml.g.cs
 C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
 C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Pages\OrderDetails.cshtml.g.cs

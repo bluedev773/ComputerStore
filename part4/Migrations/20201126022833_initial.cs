@@ -54,7 +54,7 @@ namespace part4.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ImageName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -189,6 +189,8 @@ namespace part4.Migrations
                 {
                     OrderID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderPrice = table.Column<string>(nullable: true),
+                    UserID = table.Column<string>(nullable: true),
                     ProductID = table.Column<int>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false)
                 },
@@ -301,13 +303,18 @@ namespace part4.Migrations
 
             migrationBuilder.InsertData(
                 table: "Order",
-                columns: new[] { "OrderID", "OrderDate", "ProductID" },
-                values: new object[] { 1, new DateTime(2019, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 });
+                columns: new[] { "OrderID", "OrderDate", "OrderPrice", "ProductID", "UserID" },
+                values: new object[] { 1, new DateTime(2019, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null });
 
             migrationBuilder.InsertData(
                 table: "Order",
-                columns: new[] { "OrderID", "OrderDate", "ProductID" },
-                values: new object[] { 2, new DateTime(2019, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 });
+                columns: new[] { "OrderID", "OrderDate", "OrderPrice", "ProductID", "UserID" },
+                values: new object[] { 2, new DateTime(2019, 8, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null });
+
+            migrationBuilder.InsertData(
+                table: "Order",
+                columns: new[] { "OrderID", "OrderDate", "OrderPrice", "ProductID", "UserID" },
+                values: new object[] { 3, new DateTime(2019, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, null });
 
             migrationBuilder.InsertData(
                 table: "UpgradePJT",

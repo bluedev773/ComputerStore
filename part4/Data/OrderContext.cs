@@ -97,7 +97,8 @@ namespace part4.Data
 
             modelBuilder.Entity<Order>().HasData(
                 new Order { OrderID = 1, ProductID = 1, OrderDate = new DateTime(2019, 08, 25) },
-                new Order { OrderID = 2, ProductID = 2, OrderDate = new DateTime(2019, 09, 29) }
+                new Order { OrderID = 2, ProductID = 1, OrderDate = new DateTime(2019, 08, 26) },
+                new Order { OrderID = 3, ProductID = 2, OrderDate = new DateTime(2019, 09, 29) }
                 );
             modelBuilder.Entity<UpgradePJT>().HasData(
                 new UpgradePJT { UpgradePJTID=1,OrderID = 1, UpgradeID = 1 },

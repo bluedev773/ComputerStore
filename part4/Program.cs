@@ -28,8 +28,8 @@ namespace part4
                 try
                 {
                     var context = services.GetRequiredService<OrderContext>();
-                    //context.Database.EnsureCreated();
-                    DbInitializer.Initialize(context);
+                    context.Database.EnsureCreated();
+                    //DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

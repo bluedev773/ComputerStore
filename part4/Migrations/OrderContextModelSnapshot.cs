@@ -229,8 +229,14 @@ namespace part4.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("OrderPrice")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderID");
 
@@ -248,6 +254,12 @@ namespace part4.Migrations
                         new
                         {
                             OrderID = 2,
+                            OrderDate = new DateTime(2019, 8, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductID = 1
+                        },
+                        new
+                        {
+                            OrderID = 3,
                             OrderDate = new DateTime(2019, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProductID = 2
                         });
@@ -270,7 +282,7 @@ namespace part4.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,4)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductID");
 
