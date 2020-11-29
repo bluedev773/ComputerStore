@@ -232,3 +232,4 @@ C:\Users\litvi\source\repos\part4\part4\bin\Debug\netcoreapp3.1\Properties\Servi
 C:\Users\litvi\source\repos\part4\part4\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MLComputerSystems - Web Deploy\profile.arm.json
 C:\Users\litvi\source\repos\part4\part4\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\MLComputerSystems - Web Deploy\mssql2.arm.json
 C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Pages\Orders.cshtml.g.cs
+C:\Users\litvi\source\repos\part4\part4\obj\Debug\netcoreapp3.1\Razor\Pages\Delete.cshtml.g.cs

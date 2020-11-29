@@ -15,14 +15,6 @@ namespace part4.Pages
     public class OrderModel : PageModel
     {
         public string UserID { get; set; }
-        // private StoreContext db;
-        // public OrderModel(StoreContext db) => this.db = db;
-
-        // public int Id { get; set; }
-        // public Product Product { get; set; }
-
-
-        //public async Task OnGetAsync() => Product = await db.Products.FindAsync(Id);
 
         private readonly part4.Data.OrderContext _context;
 
@@ -41,7 +33,7 @@ namespace part4.Pages
         [BindProperty]
         public int[] UpgradeIDS { get; set; }
 
-        //public async Task OnGetAsync() => Product = await _context.Products.FindAsync(id);
+        
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;

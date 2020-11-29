@@ -165,7 +165,7 @@
                         <p class="total" id="total"><strong>Total</strong><span class="float-right totalText1">$<span class="totalText2" id="total2">@Model.Product.Price</span></span></p>
 
                     </div>
-                    <!--purchase button TODO: add summary() back to onlick-->
+                    
                     <button onclick="summary()" class="purchaseLink">
                         <div id ="purchaseBtn"class="card-footer text-center"> PURCHASE &#8594; </div>
                     </button>
@@ -237,32 +237,15 @@
                     price = 0;
             }
             //Show order summary
-               // var name = "";
+
             function summary() {
-              //  var radios = Array.prototype.slice.call(document.getElementsByTagName('input'));
-               // radios.forEach(display);
+
                 var id = @Model.Product.ProductID;
                 var z = document.getElementById("productid");
                 var price = document.getElementById("total2").innerHTML;
                 document.getElementById("orderprice").value = price;
 
-
-               // var b = document.getElementById("userid");
-              //  z.setAttribute("type", "text");
                 z.value = id;
-               // b.value = userid;
-              //  z.setAttribute("asp-for", "Model.Order.ProductID");
-              //  z.setAttribute("class", "form-control");
-              //  z.setAttribute("readonly", "readonly");
-             //   document.getElementById("summary").appendChild(z);
-
-
-
-               // var a = document.createElement("INPUT");
-              //  a.setAttribute("type", "text");
-               // a.value = localDateTime;
-              //  a.setAttribute("asp-for", "Model.Order.OrderDate");
-               // document.getElementById("summary").appendChild(a);*
                 var x = document.getElementById("productCard");
                 var y = document.getElementById("productSummary");
                 var z = document.getElementById("purchaseBtn");
@@ -276,14 +259,13 @@
                 if (element.checked) {
                     name = element.id;
                     console.log(name);
-                    //document.getElementById("summary").insertAdjacentHTML('beforeend', name + "<br />");
                     var x = document.createElement("INPUT");
                     x.setAttribute("type", "text");
                     x.setAttribute("value", name);
                     x.setAttribute("class", "form-control");
                     x.setAttribute("readonly", "readonly");
                     document.getElementById("summary").appendChild(x);
-                    //TODO: Make form with selected options and write to database on post
+                    
                 }
             }
 

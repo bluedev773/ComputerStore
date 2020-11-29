@@ -26,41 +26,15 @@ namespace part4.Pages
         public async Task OnGetAsync()
         {
             UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            // Orders = (IList<Order>)await _context.Orders.FirstOrDefaultAsync(m => m.UserID == UserID);
             IQueryable<Order> usersID = from s in _context.Orders
                                              select s;
             if (UserID != null)
             {
                 usersID = usersID.Where(s => s.UserID == UserID);
             }
-            // Orders = await _context.Orders
-            //.Include(s => s.UserID)
-            // .AsNoTracking()
-            //.ToListAsync();
 
             Orders = await usersID.AsNoTracking().ToListAsync();
 
         }
-        //public async Task<IActionResult> OnGetAsync(int? id)
-        //{
-        //    UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    Order = await _context.Orders.FindAsync(id);
-
-        //    Order = await _context.Orders
-        //        .Include(s => s.UpgradePJT)
-        //        .ThenInclude(e => e.Upgrade)
-        //        .AsNoTracking()
-        //        .FirstOrDefaultAsync(m => m.OrderID == id);
-        //    if (Order == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Page();
-        //}
     }
 }
