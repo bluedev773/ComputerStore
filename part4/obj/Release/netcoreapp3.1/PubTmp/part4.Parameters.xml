@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MLComputerSystems" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\litvi\\source\\repos\\part4\\part4\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="part4.Data.OrderContext" description="" value="Data Source=tcp:part4dbserver.database.windows.net,1433;Initial Catalog=part4_db;User Id=bluefin@part4dbserver;Password=Server773" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\litvi\\source\\repos\\part4\\part4\\obj\\Release\\netcoreapp3\.1\\PubTmp\\EFSQLScripts\\part4\.Data\.OrderContext\.sql$" />
+  </parameter>
+</parameters>

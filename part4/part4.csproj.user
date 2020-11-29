@@ -12,5 +12,6 @@
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_DbContextTypeFullName>part4.Data.OrderContext</WebStackScaffolding_DbContextTypeFullName>
+    <NameOfLastUsedPublishProfile>MLComputerSystems - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\litvi\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\litvi\\.nuget\\packages"
+    ]
+  }
+}

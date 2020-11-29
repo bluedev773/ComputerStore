@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\litvi\source\repos\part4\part4\obj\Release\netcoreapp3.1\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\litvi\source\repos\part4\part4\obj\Release\netcoreapp3.1\PubTmp\EFSQLScripts\part4.Data.OrderContext.sql" />
+</sitemanifest>

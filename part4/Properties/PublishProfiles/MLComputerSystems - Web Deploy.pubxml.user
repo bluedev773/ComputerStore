@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUZdOUMD3a0mN4nvODq/8zQAAAAACAAAAAAAQZgAAAAEAACAAAAAMZ+Pp/jV8T7+Qz4nvLTGZ4qId4YeY779kTohDLdfe3wAAAAAOgAAAAAIAACAAAACdaqxG6lOpnIG9IsbSXr/6uRxGPq/mb+BVqOPFwBkGJYAAAAADZaZZMJWqfyNkzLgjortmAukD3XEmPIfEAvsaW1PweulgY6UDefygLB8ZUr5zqWtVY4ZCp5Y+FOqFTdGqIjZpXXox9GQYDQcY9VHJANuFjpJ9SFSZQKJfoF7mhqQGyjWYeiJhFk4Om9gu9Zgef0777Ocx8tRzIx10CAPYakdPv0AAAAClJP1nWy8SWb8kebFa8d0q+5fcbVywW4dT3NpdcZN3ZWpa7HnNxCqZ4CAk/GOBTpvSOl9c0gqox2suoRT2z6fb</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:part4dbserver.database.windows.net,1433%3bInitial Catalog=part4_db%3bUser Id=bluefin%40part4dbserver%3bPassword=Server773</Value>
+    </DestinationConnectionStrings>
+    <DestinationConnectionStrings Include="OrderContext">
+      <Value>Data Source=tcp:part4dbserver.database.windows.net,1433%3bInitial Catalog=part4_db%3bUser Id=bluefin%40part4dbserver%3bPassword=Server773</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="part4.Data.OrderContext">
+      <Value>Data Source=tcp:part4dbserver.database.windows.net,1433%3bInitial Catalog=part4_db%3bUser Id=bluefin%40part4dbserver%3bPassword=Server773</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
